@@ -1,0 +1,29 @@
+dependencies {
+
+    gems("rubygems:asciidoctor-chart:$asciidoctorChartGemVersion") {
+        // Exclude gems provided by AsciidoctorJ core
+        exclude module: 'asciidoctor'
+        exclude module: 'thread_safe'
+    }
+}
+
+def gemFiles = fileTree("${project.buildDir}/.gems") {
+    include 'specifications/*.gemspec'
+    include 'gems/*/lib/**'
+    include "gems/asciidoctor-chart-${asciidoctorChartGemVersion}/data/**"
+}
+
+jrubyPrepare {
+    doLast {
+        println "Copy from $gemFiles into $preparedGems"
+        copy { // bundles the gems inside this artifact
+            from gemFiles
+            into preparedGems
+        }
+    }
+}
+
+ext.publicationName = "mavenAsciidoctorJChart"
+
+apply from: rootProject.file('gradle/publish.gradle')
+apply from: rootProject.file('gradle/signing.gradle')

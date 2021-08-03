@@ -1,0 +1,14 @@
+dependencies {
+
+    testCompile ("org.asciidoctor:asciidoctorj:$asciidoctorJVersion")
+    testCompile "org.jsoup:jsoup:$jsoupVersion"
+    testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
+
+    testRuntime project(':asciidoctorj-chart')
+}
+
+jar.enabled = false
+
+configurations.all {
+    artifacts.clear()
+}
