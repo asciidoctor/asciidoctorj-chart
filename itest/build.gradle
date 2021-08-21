@@ -1,10 +1,10 @@
 dependencies {
 
-    testCompile ("org.asciidoctor:asciidoctorj:$asciidoctorJVersion")
-    testCompile "org.jsoup:jsoup:$jsoupVersion"
-    testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
+    testImplementation "org.asciidoctor:asciidoctorj:$asciidoctorJVersion"
+    testImplementation "org.jsoup:jsoup:$jsoupVersion"
+    testImplementation "org.hamcrest:hamcrest-library:$hamcrestVersion"
 
-    testRuntime project(':asciidoctorj-chart')
+    testImplementation project(':asciidoctorj-chart')
 }
 
 jar.enabled = false
