@@ -8,7 +8,7 @@ publishing {
         pom {
             name = project.name
             description = project.description
-            url = 'https://github.com/asciidoctor/asciidoctorj-diagram'
+            url = 'https://github.com/asciidoctor/asciidoctorj-chart'
             inceptionYear = '2013'
             licenses {
                 license {
@@ -19,39 +19,18 @@ publishing {
             }
             issueManagement {
                 system = 'github'
-                url = 'https://github.com/asciidoctor/asciidoctorj-diagram/issues'
+                url = 'https://github.com/asciidoctor/asciidoctorj-chart/issues'
             }
             scm {
-                url = 'https://github.com/asciidoctor/asciidoctorj-diagram'
+                url = 'https://github.com/asciidoctor/asciidoctorj-chart'
             }
             developers {
                 developer {
                     id = 'asotobu'
-                    name = 'Alex Soto Bueno'
-                    email = 'asotobu@gmail.com'
+                    name = 'Constantin Krüger'
+                    email = 'github@constantn-krueger.com'
                     timezone = '1'
                     roles = ['Project Lead']
-                }
-                developer {
-                    id = 'mojavelinux'
-                    name = 'Dan Allen'
-                    email = 'dan.j.allen@gmail.com'
-                    timezone = '-7'
-                    roles = ['Contributor']
-                }
-                developer {
-                    id = 'abelsromero'
-                    name = 'Abel Salgado Romero'
-                    email = 'abelromero@gmail.com'
-                    timezone = '1'
-                    roles = ['Contributor']
-                }
-                developer {
-                    id = 'robertpanzer'
-                    name = 'Robert Panzer'
-                    email = 'robert.panzer.pb@gmail.com'
-                    timezone = '1'
-                    roles = ['Contributor']
                 }
             }
         }
