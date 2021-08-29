@@ -26,7 +26,7 @@ publishing {
             }
             developers {
                 developer {
-                    id = 'asotobu'
+                    id = 'cokr'
                     name = 'Constantin Krüger'
                     email = 'github@constantn-krueger.com'
                     timezone = '1'
