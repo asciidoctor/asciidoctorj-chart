@@ -14,10 +14,10 @@ jobs:
 
       - uses: actions/setup-java@v2
         with:
-          java-version: '8'
+          java-version: '11'
           distribution: 'adopt'
 
-      - name: Release
+      - name: Upload Release
         run: |
           ./gradlew -i \
           build \
@@ -30,6 +30,16 @@ jobs:
           OSSRH_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           SIGNATORY_KEY: ${{ secrets.SIGNATORY_KEY }}
           SIGNATORY_PASSWORD: ${{ secrets.SIGNATORY_PASSWORD }}
+
+      - name: Close and Release Repository
+        run: |
+          ./gradlew -i \
+          closeAndReleaseRepository \
+          -Pversion=${GITHUB_REF##*/v} \
+          --stacktrace
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
 
   announcement:
     name: "Send announcements"
