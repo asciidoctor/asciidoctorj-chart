@@ -32,3 +32,26 @@ jobs:
       - name: Release Repository
         run: |
           ./gradlew -i releaseRepository
+
+  announcement:
+    name: "Send anouncements"
+    runs-on: ubuntu-latest
+    needs: release
+    if: success()
+
+    steps:
+      - name: Set release version
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Announcement
+        uses: yuzutech/zulip-send-message-action@v0.1.0
+        with:
+          username: ${{ secrets.ZULIP_USERNAME }}
+          api-key: ${{ secrets.ZULIP_API_KEY }}
+          organization-url: 'https://asciidoctor.zulipchat.com'
+          to: '279652'
+          type: 'stream'
+          topic: 'releases'
+          content: |
+            asciidoctorj-chart ${{ env.RELEASE_VERSION }} is out!
+            https://search.maven.org/artifact/org.asciidoctor/asciidoctorj-chart/${{ env.RELEASE_VERSION }}/jar
