@@ -39,7 +39,7 @@ ifndef::awestruct[:uri-docs: http://asciidoctor.org/docs]
 {uri-repo}[AsciidoctorJ Chart] is a convenient repackaging of Asciidoctor Chart for use with {uri-asciidoctorj}[AsciidoctorJ], which brings the Asciidoctor ecosystem to the JVM.
 
 ifdef::badges[]
-image:https://github.com/asciidoctor/asciidoctorj-chart/workflows/CI/badge.svg?branch=master[Build Status (GitHub Workflow CI), link=https://github.com/asciidoctor/asciidoctorj-chart/actions?query=workflow%3ACI+branch%3Amaster]
+image:https://github.com/asciidoctor/asciidoctorj-chart/actions/workflows/ci.yml/badge.svg?branch=main[Build Status (GitHub Workflow CI), link=https://github.com/asciidoctor/asciidoctorj-chart/actions/workflows/ci.yml]
 endif::[]
 
 ifdef::awestruct,env-browser[]
