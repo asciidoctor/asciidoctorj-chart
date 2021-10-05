@@ -22,7 +22,6 @@ jobs:
           ./gradlew -i \
           build \
           publishAllPublicationsToSonatypeRepository \
-          closeAndReleaseRepository \
           -Pversion=${GITHUB_REF##*/v} \
           --stacktrace
         env:
