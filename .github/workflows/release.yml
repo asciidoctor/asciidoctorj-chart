@@ -35,10 +35,9 @@ jobs:
           ./gradlew -i \
           closeAndReleaseRepository \
           -Pversion=${GITHUB_REF##*/v} \
+          -PnexusUsername=${{ secrets.OSSRH_USERNAME }} \
+          -PnexusPassword=${{ secrets.OSSRH_TOKEN }} \
           --stacktrace
-        env:
-          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          OSSRH_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
 
   announcement:
     name: "Send announcements"
