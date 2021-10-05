@@ -17,21 +17,10 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
 
-      - name: Build
+      - name: Release
         run: |
-          ./gradlew -i build -Pversion=${GITHUB_REF##*/v}
+          ./gradlew -i build publishAllPublicationsToSonatypeRepository closeRepository releaseRepository -Pversion=${GITHUB_REF##*/v} --stacktrace
 
-      - name: Release Local
-        run: |
-          ./gradlew -i publishAllPublicationsToLocalRepository
-
-      - name: Release to Nexus OSS Staging
-        run: |
-          ./gradlew -i publishAllPublicationsToSonatypeRepository closeRepository
-
-      - name: Release Repository
-        run: |
-          ./gradlew -i releaseRepository
 
   announcement:
     name: "Send announcements"
