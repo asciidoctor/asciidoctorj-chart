@@ -19,8 +19,18 @@ jobs:
 
       - name: Release
         run: |
-          ./gradlew -i build publishAllPublicationsToSonatypeRepository closeRepository releaseRepository -Pversion=${GITHUB_REF##*/v} --stacktrace
-
+          ./gradlew -i \
+          build \
+          publishAllPublicationsToSonatypeRepository \
+          closeRepository \
+          releaseRepository \
+          -Pversion=${GITHUB_REF##*/v} \
+          --stacktrace
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+          SIGNATORY_KEY: ${{ secrets.SIGNATORY_KEY }}
+          SIGNATORY_PASSWORD: ${{ secrets.SIGNATORY_PASSWORD }}
 
   announcement:
     name: "Send announcements"
