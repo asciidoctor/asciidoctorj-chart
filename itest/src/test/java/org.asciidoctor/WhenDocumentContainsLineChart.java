@@ -39,9 +39,14 @@ class WhenDocumentContainsLineChart {
         assertTrue(lineChartOutputFile.exists());
         Document doc = Jsoup.parse(lineChartOutputFile, "UTF-8");
         List<String> scriptList = doc.head().getElementsByTag("script").stream().map(element -> element.attr("src")).collect(Collectors.toList());
+        List<String> stylesheetList = doc.head().getElementsByTag("link").stream().map(element -> element.attr("href")).collect(Collectors.toList());
 
-        assertThat(scriptList, hasItem("http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"));
+        assertThat(scriptList, hasItem("https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"));
+        assertThat(scriptList, hasItem("https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"));
+        assertThat(stylesheetList, hasItem("https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css"));
         Element element = doc.body().selectFirst("div > script");
         assertThat(element, Matchers.notNullValue());
+
+
     }
 }
